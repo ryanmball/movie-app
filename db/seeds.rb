@@ -6,14 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Actor.create(first_name: "Daniel", last_name: "Radcliffe", known_for: "Harry Potter")
+# Actor.create(first_name: "Daniel", last_name: "Radcliffe", known_for: "Harry Potter")
 
-Actor.create(first_name: "Taika", last_name: "Waititi", known_for: "Thor: Ragnarok (director, actor)")
+# Actor.create(first_name: "Taika", last_name: "Waititi", known_for: "Thor: Ragnarok (director, actor)")
 
-Actor.create(first_name: "Tessa", last_name: "Thompson", known_for: "Thor: Ragnarok")
+# Actor.create(first_name: "Tessa", last_name: "Thompson", known_for: "Thor: Ragnarok")
 
-Actor.create(first_name: "Chris", last_name: "Hemsworth", known_for: "Thor, Thor: Ragnarok, Avengers, Extraction")
+# Actor.create(first_name: "Chris", last_name: "Hemsworth", known_for: "Thor, Thor: Ragnarok, Avengers, Extraction")
 
-Actor.create(first_name: "Tom", last_name: "Hanks", known_for: "Cast Away")
+# Actor.create(first_name: "Tom", last_name: "Hanks", known_for: "Cast Away")
 
-Actor.create(first_name: "Ben", last_name: "Stiller", known_for: "Zoolander, Heavyweights, Along Came Polly")
+# Actor.create(first_name: "Ben", last_name: "Stiller", known_for: "Zoolander, Heavyweights, Along Came Polly")
+
+require "ffaker"
+
+10.times do
+  Actor.create(first_name: FFaker::Name.first_name, last_name: FFaker::Name.last_name, known_for: FFaker::Movie.title)
+end
