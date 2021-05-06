@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   get "display_movie" => "movies#display_movie"
 
   get "display_all_movies" => "movies#display_all_movies"
+
+  get "twenty_first_century_movies" => "movies#twenty_first_century_movies"
+
+  get "movie_id_title" => "movies#movie_id_title"
 end
