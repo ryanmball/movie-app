@@ -1,23 +1,27 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  #MOVIES
+  get "movies" => "movies#index"
 
-  get "query_display_actor" => "actors#display_actor"
-  # displays a single actor by taking a query parameter in a GET web request
-  
-  get "url_display_actor/:id" => "actors#display_actor"
-  # displays a single actor by taking a URL parameter in a GET web request
-  
-  post "body_display_actor" => "actors#display_actor"
-  # displays a single actor by taking a body parameter in a POST web request
-  
-  get "display_all_actors" => "actors#display_all_actors"
+  post "movies" => "movies#create"
 
-  get "display_movie" => "movies#display_movie"
+  get "movies/:id" => "movies#show"
 
-  get "display_all_movies" => "movies#display_all_movies"
+  patch "movies/:id" => "movies#update"
+
+  delete "movies/:id" => "movies#destroy"
 
   get "twenty_first_century_movies" => "movies#twenty_first_century_movies"
 
   get "movie_id_title" => "movies#movie_id_title"
-  
+
+  #ACTORS
+  get "actors" => "actors#index"
+
+  post "actors" => "actors#create"
+
+  get "actors/:id" => "actors#show"
+
+  patch "actors/:id" => "actors#update"
+
+  delete "actors/:id" => "actors#destroy"
 end

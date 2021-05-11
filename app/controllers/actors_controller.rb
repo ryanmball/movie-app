@@ -1,14 +1,34 @@
 class ActorsController < ApplicationController
-  # def display_actor_by_id(id)
-  #   render json: Actor.find(id).as_json
-  # end
-  # The method above would work if we were making a request in the terminal, but we cant enter an id through a web request. Not sure how this would be handled.
-  
-  def display_actor
-    render json: Actor.find(params[:id]).as_json
+  def index
+    render json: Actor.all.sort_by { |actor| actor[:id] }
+  end  
+
+  def create
+    actor = Actor.new(
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      known_for: params[:known_for]
+    )
+    actor.save
+    render json: actor
   end
 
-  def display_all_actors
-    render json: Actor.all.as_json
+  def show
+    render json: Actor.find(params[:id])
+  end
+
+  def update
+    actor = Actor.find(params[:id])
+    actor.first_name = params[:first_name] || actor.first_name
+    actor.last_name = params[:last_name] || actor.last_name
+    actor.known_for = params[:known_for] || actor.known_for
+    actor.save
+    render json: actor
+  end
+
+  def destroy
+    actor = Actor.find(params[:id])
+    actor.destroy
+    render json: { message: "Actor record successfully destroyed!" }
   end
 end
