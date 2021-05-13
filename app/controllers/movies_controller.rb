@@ -11,8 +11,11 @@ class MoviesController < ApplicationController
       director: params[:director],
       english: params[:english]
     )
-    movie.save
-    render json: movie
+    if movie.save
+      render json: movie    # HAPPY PATH
+    else
+      render json: { errors: movie.errors.full_messages }, status: 422    # SAD PATH
+    end
   end
 
   def show
@@ -26,8 +29,11 @@ class MoviesController < ApplicationController
     movie.plot = params[:plot] || movie.plot
     movie.director = params[:director] || movie.director
     movie.english = params[:english] || movie.english
-    movie.save
-    render json: movie
+    if movie.save
+      render json: movie    # HAPPY PATH
+    else
+      render json: { errors: movie.errors.full_messages }, status: 422    # SAD PATH
+    end
   end
 
   def destroy
