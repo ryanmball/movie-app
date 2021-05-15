@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   def index
-    render json: Movie.all.sort_by { |movie| movie[:id] }
+    # render json: Movie.order(:id)
+    render json: Movie.where("english = true").order(:id)
   end
 
   def create

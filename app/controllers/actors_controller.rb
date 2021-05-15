@@ -1,6 +1,7 @@
 class ActorsController < ApplicationController
   def index
-    render json: Actor.all.sort_by { |actor| actor[:id] }
+    # render json: Actor.order(:id)
+    render json: Actor.order("age desc")
   end  
 
   def create
