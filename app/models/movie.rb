@@ -1,4 +1,6 @@
 class Movie < ApplicationRecord
+  has_many :actors
+
   validates :title, presence: true, uniqueness: true
   validates :year, numericality: { less_than: (Date.today.year + 1) }
   validates :plot, length: { minimum: 50 }
