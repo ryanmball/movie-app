@@ -1,7 +1,9 @@
 class MoviesController < ApplicationController
+
+  before_action :authenticate_admin, except: [:index, :show, :twenty_first_century_movies, :movie_id_title]
+  
   def index
-    # render json: Movie.order(:id)
-    render json: Movie.where("english = true").order(:id)
+    render json: Movie.order(:id)
   end
 
   def create
