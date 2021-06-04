@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_05_26_001221) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "director"
-    t.boolean "english"
+    t.boolean "english", default: true
   end
 
   create_table "users", force: :cascade do |t|
