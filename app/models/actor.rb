@@ -1,5 +1,5 @@
 class Actor < ApplicationRecord
-  belongs_to :movie
+  belongs_to :movie, optional: true
 
   def movie_plot
     movie.plot
